@@ -63,8 +63,7 @@ class Scale:
 		self.start.turn_until(start_letter)
 
 	def change_mode(self, mode_letter):
-		v = filter(lambda x: "#" not in x, self.start._data)
-
+		v = ["C", "D", "E", "F", "G", "A", "B"]
 		self.values.turn_ntimes(v.index(mode_letter))
 
 	def __str__(self):

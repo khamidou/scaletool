@@ -15,7 +15,9 @@ class ScalesFrame(Frame):
 	
 	def closure(self, text):
 		def handler():
+			global current_scale, current_mode
 			current_scale = text
+			print "current scale %s, current mode %s" % (current_scale, current_mode)
 			s = Scale(scale=current_scale, mode=current_mode)
 			self.app.outputLabel.configure(text=str(s))
 		return handler
@@ -35,7 +37,9 @@ class ModeFrame(Frame):
 	
 	def closure(self, text):
 		def handler():
+			global current_scale, current_mode
 			current_mode = modes[text]
+			print "current scale %s, current mode %s" % (current_scale, current_mode)
 			s = Scale(scale=current_scale, mode=current_mode)
 			self.app.outputLabel.configure(text=str(s))
 		return handler
