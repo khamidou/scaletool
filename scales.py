@@ -52,12 +52,12 @@ modes = {"Ionian" : "C", "Dorian" : "D", "Phrygian" : "E", "Lydian" : "F",
 	 "Mixolydian" : "G", "Aeolian" : "A", "Locrian" : "B"}
 
 class Scale:
-	def __init__(self, scale="C", mode="C"):
+	def __init__(self, scale="C", formula=[2, 2, 1, 2, 2, 2, 1]):
 		self.start = Ring(["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"])
 		# We store a modified scale as numbers : 1 means no sharp or flat, 0.5, one flat, 1.5 one sharp
-		self.values = Ring([2, 2, 1, 2, 2, 2, 1])
+		self.formula = formula
 		self.transpose_scale(scale)
-		self.change_mode(mode)
+		#self.change_mode(mode)
 	
 	def transpose_scale(self, start_letter):
 		self.start.turn_until(start_letter)
@@ -67,7 +67,6 @@ class Scale:
 		self.values.turn_ntimes(v.index(mode_letter))
 
 	def __str__(self):
-		print self.values
 		retscale = self.start[0] + " " 
 		notes = self.start
 		translation_table = {	"Cb": "B",
@@ -85,10 +84,10 @@ class Scale:
 		j = 0
 		while i < 11 and j < 6: # reduce(lambda x,y: x+y, self.values)
 			note = notes[i]
-			if self.values[j] == 1:
+			if self.formula[j] == 1:
 				retscale += notes[i+1]
 				i += 1 
-			elif self.values[j] == 2:	
+			elif self.formula[j] == 2:	
 				retscale += notes[i+2]
 				i += 2 
 
@@ -96,3 +95,6 @@ class Scale:
 			retscale += " "
 		return retscale
 
+if __name__ == "__main__":
+	s = Scale("C", [2, 1, 1, 2, 2, 2, 1])
+	print str(s)
