@@ -29,8 +29,9 @@ class ScalesFrame(Frame):
 
 class ModeFrame(Frame):
 	scales = [	{"name": "Major", "formula" : [2, 2, 1, 2, 2, 2, 1], "chords": "I ii iii IV V vidim vii"},
-			{"name": "Harmonic Minor", "formula" : [2, 1, 2, 2, 1, 3, 1]},
-			{"name": "Natural Minor", "formula" : [2, 1, 2, 2, 1, 2, 2]},
+			{"name": "Harmonic Minor", "formula" : [2, 1, 2, 2, 1, 3, 1], 
+			 "chords": "i iidim IIIaug iv V VI viidim"},
+			{"name": "Natural Minor", "formula" : [2, 1, 2, 2, 1, 2, 2], "chords": "i iidim III iv v VI VII"},
 		]
 
 	def __init__(self, master=None, app=None):
@@ -93,7 +94,7 @@ class Application(Frame):
 
 		self.derivedChordsFrame = LabelFrame(self, text="Derived Chords")
 		self.derivedChordsFrame.grid()
-		self.derivedChordsLabel = Label(master=self.derivedChordsFrame,	text="ho")
+		self.derivedChordsLabel = Label(master=self.derivedChordsFrame,	text=ModeFrame.scales[0]["chords"])
 		self.derivedChordsLabel.pack()
 
 		self.outputLabel.grid()
