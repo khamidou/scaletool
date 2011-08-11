@@ -83,7 +83,7 @@ class Scale:
 		i = 0
 		j = 0
 		while i < 11 and j < 6: # reduce(lambda x,y: x+y, self.values)
-			n = self.formula[i]
+			n = self.formula[j]
 			retscale += notes[i+n]
 			i += n 
 			j += 1 # Don't forget to increment j to avoid looping.
